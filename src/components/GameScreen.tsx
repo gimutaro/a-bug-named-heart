@@ -40,16 +40,17 @@ export default function GameScreen() {
     dispatch({ type: 'RESTART_GAME' })
   }
 
-  if (!currentScene) {
+  if (!currentScene || state.isGameEnded) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl mb-4">Game Complete</h1>
+      <div className="min-h-screen flex items-center justify-center bg-black">
+        <div className="text-center text-white max-w-md mx-auto px-4">
+          <h1 className="text-4xl mb-4 font-bold">ゲーム終了</h1>
+          <p className="text-xl mb-12 text-gray-300">物語はここで終わります</p>
           <button 
             onClick={handleRestart}
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg"
+            className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg text-xl font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg"
           >
-            Restart Game
+            New Game
           </button>
         </div>
       </div>
